@@ -1,4 +1,5 @@
 <?php
+set_time_limit(0);
 $folder = $_GET['folder'];
 $folder = iconv('UTF-8', 'GB18030//IGNORE', $folder);
 //$folder = urlencode($folder);

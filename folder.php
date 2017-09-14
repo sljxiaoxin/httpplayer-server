@@ -27,25 +27,25 @@
 		///*
 		//按路径读取当前路径下的所有文件
 		//echo "fff\r\n";
-		$realDir = iconv('UTF-8', 'GB2312', $realDir);
+		$realDir = iconv('UTF-8', 'GB18030', $realDir);
 		if(is_dir($realDir)){
 			//echo "aaa\r\n";
 			if($dh = opendir($realDir)){
 				//echo "bbb\r\n";
 				while (($file = readdir($dh)) !== false) {
 					if(!($file == '.' || $file == '..')){
-						//$file = iconv('GB2312', 'UTF-8', $file);
+						//$file = iconv('GB18030', 'UTF-8', $file);
 						$realFile = $realDir."\\".$file;
 						//echo "file path is:".$realFile."<br>";
 						if(is_dir($realFile) && $realFile != './.' && $realFile != './..'){
 							//echo "folder name is:".$file."<br>";
 							$arrFolder[] = array(
 								'type' => 'folder',
-								'name' => iconv('GB2312', 'UTF-8', $file),
-								'docName' => iconv('GB2312', 'UTF-8', $file),
+								'name' => iconv('GB18030', 'UTF-8', $file),
+								'docName' => iconv('GB18030', 'UTF-8', $file),
 								'size' => 'N/A',
 								'date' => 'N/A',
-								'url' => $folder.iconv('GB2312', 'UTF-8', $file)
+								'url' => $folder.iconv('GB18030', 'UTF-8', $file)
 							);
 						}else if(is_file($realFile)){
 							$arrExt = explode(".", $file);
@@ -56,22 +56,22 @@
 								$date = date("Y-m-d",$t);
 								$arrPicture[] = array(
 									'type' => 'image',
-									'name' => iconv('GB2312', 'UTF-8', $file),
-									'docName' => iconv('GB2312', 'UTF-8', $file),
+									'name' => iconv('GB18030', 'UTF-8', $file),
+									'docName' => iconv('GB18030', 'UTF-8', $file),
 									'size' => filesize($realFile),
 									'date' => $date,
-									'url' => $folder.iconv('GB2312', 'UTF-8', $file)
+									'url' => $folder.iconv('GB18030', 'UTF-8', $file)
 								);
 							}elseif(in_array($strExt, array('flv','mkv','mov','avi','mp4','rm','rmvb','wmv'))){
 								$t = filemtime($realFile);
 								$date = date("Y-m-d",$t);
 								$arrVideo[] = array(
 									'type' => 'video',
-									'name' => iconv('GB2312', 'UTF-8', $file),
-									'docName' => iconv('GB2312', 'UTF-8', $file),
-									'size' => filesize($realFile),
+									'name' => iconv('GB18030', 'UTF-8', $file),
+									'docName' => iconv('GB18030', 'UTF-8', $file),
+									'size' => sprintf("%u",filesize($realFile)),
 									'date' => $date,
-									'url' => $folder.iconv('GB2312', 'UTF-8', $file)
+									'url' => $folder.iconv('GB18030', 'UTF-8', $file)
 								);
 							}
 							//echo "file name is => ".$file."<br>";
